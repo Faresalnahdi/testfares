@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+// Check if the user is not logged in, and redirect to the login page if necessary
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php'); // Redirect to your login page
+    exit();
+}
+
+// The rest of your HTML content for authenticated users
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -139,9 +151,6 @@
         <li>Problem Solving</li>
         <li>Creative Strategy</li>
       </ul>
-
-    
-      <a href="javascript:void(0)" onclick="openLoginModal()"></a>
     </div>
   </header>
 
@@ -178,35 +187,6 @@
   <footer>
     <p>Contact: mrfaresthabet@gmail.com</p>
   </footer>
-
-  <script>
-    // Call the openLoginModal function directly
-    openLoginModal();
-
-    function openLoginModal() {
-      document.getElementById("loginModal").style.display = "block";
-    }
-
-    function closeLoginModal() {
-      document.getElementById("loginModal").style.display = "none";
-    }
-
-    function login() {
-      var username = document.getElementById("username").value;
-      var password = document.getElementById("password").value;
-      var errorMessage = document.getElementById("error-message");
-
-      // You can add your authentication logic here.
-      // This is a simple example with hardcoded values.
-      if (username === "faresuser" && password === "farespass") {
-        // Redirect to a dashboard page or perform any desired action.
-        alert("Login successful!");
-        closeLoginModal();
-      } else {
-        errorMessage.innerText = "Invalid username or password.";
-      }
-    }
-  </script>
 
 </body>
 </html>
